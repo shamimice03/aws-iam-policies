@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {   
+            "Sid": "ReadOnlyAccess",  
+            "Action": [
+                "ec2:Describe*",
+                "ec2:GetConsole*",
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:GetMetricStatistics",
+                "iam:ListInstanceProfiles"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        },
+        {   
+            "Sid": "AllowEC2OnAllRegion",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances",
+                "ec2:CreateTags"
+            ],
+            "Resource": [
+                "arn:aws:ec2:*:*:instance/*",
+                "arn:aws:ec2:*:*:key-pair/*",
+                "arn:aws:ec2:*:*:security-group/*",
+                "arn:aws:ec2:*:*:volume/*",
+                "arn:aws:ec2:*:*:network-interface/*",
+                "arn:aws:ec2:*:*:subnet/*",
+                "arn:aws:ec2:*:*:image/ami-*"
+            ]
+        }
+    ]
+}
